@@ -12,13 +12,13 @@ composer.phar
 ### dotenv ###
 .env
 
+.deta
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
-test.db
-docker-compose.yml
+*.db
 
 # C extensions
 *.so
@@ -138,6 +138,7 @@ celerybeat.pid
 
 # Environments
 .venv
+.venv*
 env/
 venv/
 ENV/

@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import List, Optional
+from typing import List, Union
 import uuid
 from pydantic import BaseModel, EmailStr, constr
 
@@ -36,7 +36,7 @@ class VideoBaseSchema(BaseModel):
     titulo: str
     descricao: str
     url: str
-    categoriaId:  str | None = "1"
+    categoriaId:  Union[str, None] = "1"
 
     class Config:
         orm_mode = True
@@ -46,7 +46,7 @@ class UpdateVideoSchema(BaseModel):
     titulo: str
     descricao: str
     url: str
-    categoriaId: str | None = "1"
+    categoriaId: Union[str, None] = "1"
 
     class Config:
         orm_mode = True

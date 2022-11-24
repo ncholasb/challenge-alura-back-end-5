@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.responses import RedirectResponse
 from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.routers import videos, categorias, user, auth
@@ -7,7 +8,7 @@ from app.database import Base, engine
 Base.metadata.create_all(engine)
 
 app = FastAPI(
-    title="Challenge Backend 5 - Alura: FastAPI + Postgres"
+    title="Challenge Backend 5 - Alura: FastAPI + Postgres (docker)"
 )
 
 origins = [
@@ -29,6 +30,6 @@ app.include_router(videos.router, tags=['Videos'], prefix='/api')
 app.include_router(categorias.router, tags=['categorias'], prefix='/api')
 
 
-@app.get('/api/healthchecker')
-def root():
-    return {'message': 'Hello World'}
+@app.get('/')
+async def docs_redirect():
+    return RedirectResponse(url='/docs')
